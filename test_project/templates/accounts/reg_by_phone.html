@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h2>Регистрация</h2>
+        {% if reg_form.non_field_errors %}
+            <p class="text-error">{{ reg_form.non_field_errors }}</p>
+        {% endif %}
+
+        <form action="" method="POST" class="form-horizontal">{% csrf_token %}
+
+            <div class="control-group {% if reg_form.phone.errors %}error{% endif %}">
+                <label class="control-label" for="id_phone">{{ reg_form.phone.label }}</label>
+                <div class="controls">
+                    {{ reg_form.phone }}
+                    <span class="help-inline">{{ reg_form.phone.errors }}</span>
+                </div>
+            </div>
+
+            <div class="control-group {% if reg_form.password.errors %}error{% endif %}">
+                <label class="control-label" for="inputEmail">{{ reg_form.password.label }}</label>
+                <div class="controls">
+                    {{ reg_form.password }}
+                    <span class="help-inline">{{ reg_form.password.errors }}</span>
+                </div>
+            </div>
+
+            <div class="control-group {% if reg_form.password2.errors %}error{% endif %}">
+                <label class="control-label" for="id_password2">{{ reg_form.password2.label }}</label>
+                <div class="controls">
+                    {{ reg_form.password2 }}
+                    <span class="help-inline">{{ reg_form.password2.errors }}</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" class="btn" value="Регистрация" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
